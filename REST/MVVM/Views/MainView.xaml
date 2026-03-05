@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="REST.MVVM.Views.MainView"
+             Title="MainView"
+             BackgroundColor="#F3F4F6">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Grid BackgroundColor="#1E3A8A" Padding="20,40,20,20">
+            <Grid ColumnDefinitions="*,Auto">
+
+                <VerticalStackLayout>
+                    <Label Text="GUIDANCE PORTAL"
+                           FontSize="12"
+                           TextColor="#A5B4FC"/>
+
+                    <Label Text="Student Records"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </VerticalStackLayout>
+
+                <Frame BackgroundColor="#3B82F6"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       CornerRadius="12"
+                       Padding="0"
+                       HorizontalOptions="End">
+
+                    <Label Text="MC"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontAttributes="Bold"/>
+                </Frame>
+
+            </Grid>
+        </Grid>
+
+
+        <!-- SEARCH -->
+        <SearchBar Grid.Row="1"
+                   Placeholder="Search students..."
+                   Margin="16,10"
+                   BackgroundColor="White"/>
+
+
+        <!-- STUDENT LIST -->
+        <CollectionView Grid.Row="2"
+                        Margin="16,0"
+                        ItemsSource="{Binding Students}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame Padding="16"
+                           Margin="0,8"
+                           CornerRadius="16"
+                           HasShadow="True">
+
+                        <Grid ColumnDefinitions="60,*,Auto">
+
+                            <!-- Avatar -->
+                            <Frame WidthRequest="48"
+                                   HeightRequest="48"
+                                   CornerRadius="24"
+                                   BackgroundColor="#3B82F6"
+                                   Padding="0">
+
+                                <Label Text="{Binding Initials}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+
+                            <!-- Student Info -->
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Spacing="2">
+
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"/>
+
+                                <Label Text="{Binding GradeSection}"
+                                       FontSize="13"
+                                       TextColor="Gray"/>
+
+                            </VerticalStackLayout>
+
+
+                            <!-- Status -->
+                            <Frame Grid.Column="2"
+                                   Padding="10,4"
+                                   CornerRadius="10"
+                                   BackgroundColor="{Binding StatusColor}">
+
+                                <Label Text="{Binding Status}"
+                                       FontSize="12"
+                                       TextColor="White"/>
+                            </Frame>
+
+                        </Grid>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
+        <!-- BOTTOM NAV -->
+        <Grid Grid.Row="3"
+              BackgroundColor="White"
+              Padding="10"
+              ColumnDefinitions="*,*,*,*">
+
+            <VerticalStackLayout HorizontalOptions="Center">
+                <Label Text="👥" FontSize="20"/>
+                <Label Text="Students" FontSize="12"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                <Label Text="📊" FontSize="20"/>
+                <Label Text="Reports" FontSize="12"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
+                <Label Text="📅" FontSize="20"/>
+                <Label Text="Schedule" FontSize="12"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center">
+                <Label Text="🏠" FontSize="20"/>
+                <Label Text="Home" FontSize="12"/>
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+        <!-- FLOATING BUTTON -->
+        <Button Text="+"
+                FontSize="28"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                Grid.Row="2"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="20"/>
+
+    </Grid>
+
+</ContentPage>
