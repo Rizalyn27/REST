@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="REST.MVVM.Views.UpdateView"
+             Title="UpdateView">
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="Auto,*">
+                <Label Text="←" FontSize="20"/>
+                <Label Text="Edit Session"
+                       Grid.Column="1"
+                       Style="{StaticResource HeaderTitle}"/>
+            </Grid>
+
+            <!-- Student -->
+            <Label Text="Student Name" FontAttributes="Bold"/>
+            <Entry Text="Alex Thompson"/>
+
+            <!-- Counselor -->
+            <Label Text="Counselor" FontAttributes="Bold"/>
+            <Entry Text="Dr. Sarah Jenkins"/>
+
+            <!-- Date Time -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+
+                <VerticalStackLayout>
+                    <Label Text="Date" FontAttributes="Bold"/>
+                    <DatePicker/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Time" FontAttributes="Bold"/>
+                    <TimePicker/>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <!-- Notes -->
+            <Label Text="Notes" FontAttributes="Bold"/>
+
+            <Editor HeightRequest="150"
+                    BackgroundColor="#F0F0F0"
+                    Text="Session focused on academic stress management."/>
+
+            <!-- Update Button -->
+            <Button Text="Update Session"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    TextColor="White"
+                    CornerRadius="10"/>
+
+            <!-- Danger Zone -->
+            <Label Text="DANGER ZONE"
+                   FontAttributes="Bold"
+                   FontSize="12"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,0"/>
+
+            <Button Text="Hard Delete"
+                    BackgroundColor="#FFE5E5"
+                    TextColor="Red"
+                    CornerRadius="10"/>
+
+            <Label Text="This action is permanent and cannot be undone."
+                   FontSize="11"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

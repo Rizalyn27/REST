@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="REST.MVVM.Views.CreateView"
+             Title="CreateView">
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <!-- Header -->
+            <Grid ColumnDefinitions="Auto,*">
+                <Label Text="✕" 
+                       FontSize="20"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       TextColor="Red">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Close_Clicked" NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+                
+                <Label Text="New Session"
+                       Grid.Column="1"
+                       Style="{StaticResource HeaderTitle}"/>
+            </Grid>
+
+            <!-- Student -->
+            <Label Text="Student Name" FontAttributes="Bold"/>
+            <Picker Title="Select Student"/>
+
+            <!-- Counselor -->
+            <Label Text="Assigned Counselor" FontAttributes="Bold"/>
+            <Entry Text="Dr. Emily Thorne"/>
+
+            <!-- Date -->
+            <Label Text="Session Date" FontAttributes="Bold"/>
+            <DatePicker/>
+
+            <!-- Time -->
+            <Label Text="Session Time" FontAttributes="Bold"/>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+
+                <TimePicker/>
+
+                <Picker Grid.Column="1">
+                    <Picker.Items>
+                        <x:String>30 Minutes</x:String>
+                        <x:String>45 Minutes</x:String>
+                        <x:String>1 Hour</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            </Grid>
+
+            <!-- Notes -->
+            <Label Text="Notes" FontAttributes="Bold"/>
+
+            <Editor
+                Placeholder="Mention session objectives or initial observations..."
+                HeightRequest="120"
+                BackgroundColor="#F0F0F0"/>
+
+            <!-- Buttons -->
+            <Button Text="Save Session"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    TextColor="White"
+                    CornerRadius="10"/>
+
+            <Button Text="Cancel"
+                    BackgroundColor="#E0E0E0"
+                    Clicked="Close_Clicked"
+                    TextColor="Black"
+                    CornerRadius="10"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>
