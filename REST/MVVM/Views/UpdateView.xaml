@@ -26,7 +26,7 @@
             <!-- Date Time -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
 
-                <VerticalStackLayout>
+    <VerticalStackLayout>
                     <Label Text="Date" FontAttributes="Bold"/>
                     <DatePicker/>
                 </VerticalStackLayout>
@@ -69,7 +69,7 @@
                    TextColor="Gray"
                    HorizontalOptions="Center"/>
 
-        </VerticalStackLayout>
+    </VerticalStackLayout>
 
     </ScrollView>
 </ContentPage>

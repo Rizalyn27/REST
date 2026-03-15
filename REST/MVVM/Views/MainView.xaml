@@ -20,7 +20,16 @@
                    Text="👤"
                    FontSize="20"/>
 
+                    <Label Text="MC"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontAttributes="Bold"/>
+                </Frame>
+
+            </Grid>
         </Grid>
+
 
         <!-- SEARCH -->
         <SearchBar Grid.Row="1"
@@ -67,13 +76,14 @@
                                 WidthRequest="40"
                                 CornerRadius="20"
                                 BackgroundColor="#FFD6C2"
-                                Padding="0">
+                                   Padding="0">
 
                                 <Label
                                     Text="{Binding Initials}"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    FontAttributes="Bold"/>
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
                             </Frame>
 
                             <!-- Name -->
@@ -107,7 +117,7 @@
                                 <Button Text="Edit" Clicked="Update_Clicked" FontSize="12"/>
                                 <Button Text="Archive" FontSize="12"/>
                                 <Button Text="Remove"
-                                        FontSize="12"
+                                       FontSize="12"
                                         TextColor="Red"/>
 
                             </HorizontalStackLayout>
@@ -157,6 +167,6 @@
                 <Label Text="Settings" FontSize="10"/>
             </VerticalStackLayout>-->
 
-        </Grid>
+    </Grid>
 
 </ContentPage>

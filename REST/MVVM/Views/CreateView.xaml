@@ -12,7 +12,7 @@
                 <Label Text="✕" 
                        FontSize="20"
                        HorizontalOptions="End"
-                       VerticalOptions="Center"
+            VerticalOptions="Center" 
                        TextColor="Red">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Close_Clicked" NumberOfTapsRequired="1" />
@@ -73,7 +73,7 @@
                     TextColor="Black"
                     CornerRadius="10"/>
 
-        </VerticalStackLayout>
+    </VerticalStackLayout>
 
     </ScrollView>
 </ContentPage>
