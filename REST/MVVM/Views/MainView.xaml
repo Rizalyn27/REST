@@ -11,161 +11,48 @@
         <Grid Padding="20,10" ColumnDefinitions="Auto,*,Auto">
 
             <Label Text="☰" FontSize="22"/>
+            <Label Grid.Column="1" Text="Counseling Sessions" Style="{StaticResource HeaderTitle}"/>
 
-            <Label Grid.Column="1"
-                   Text="Counseling Sessions"
-                   Style="{StaticResource HeaderTitle}"/>
+            <Frame Grid.Column="2" Padding="5" CornerRadius="20" BackgroundColor="Gray" HorizontalOptions="End" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="👤" FontSize="20"/>
+                    <Label Text="MC" TextColor="White" FontAttributes="Bold" FontSize="14"/>
+                    <Label Text="✕" TextColor="Red" FontSize="20">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Closed_Click" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
 
-            <Label Grid.Column="2"
-                   Text="👤"
-                   FontSize="20"/>
-
-                    <Label Text="MC"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           TextColor="White"
-                           FontAttributes="Bold"/>
-                </Frame>
-
-            </Grid>
         </Grid>
 
-
         <!-- SEARCH -->
-        <SearchBar Grid.Row="1"
-                   Placeholder="Search students or dates"
-                   Margin="20,0"/>
+        <SearchBar Grid.Row="1" Placeholder="Search students or dates" Margin="20,0"/>
 
         <!-- FILTER -->
-        <HorizontalStackLayout Grid.Row="2"
-                               Spacing="10"
-                               Margin="20,10">
-
-            <Button Text="All Sessions"
-                    BackgroundColor="{StaticResource PrimaryColor}"
-                    TextColor="White"
-                    CornerRadius="20"/>
-
-            <Button Text="Upcoming"
-                    BackgroundColor="#EAEAEA"
-                    CornerRadius="20"/>
-
-            <Button Text="Archived"
-                    BackgroundColor="#EAEAEA"
-                    CornerRadius="20"/>
-
+        <HorizontalStackLayout Grid.Row="2" Spacing="10" Margin="20,10">
+            <Button Text="All Sessions" BackgroundColor="{StaticResource PrimaryColor}" TextColor="White" CornerRadius="20"/>
+            <Button Text="Upcoming" BackgroundColor="#EAEAEA" CornerRadius="20"/>
+            <Button Text="Archived" BackgroundColor="#EAEAEA" CornerRadius="20"/>
         </HorizontalStackLayout>
 
-        <!-- COLLECTIONVIEW -->
-        <CollectionView Grid.Row="3"
-                        Margin="20"
-                        ItemsSource="{Binding Sessions}">
+        <!-- COLLECTIONVIEW + Floating Button -->
+        <Grid Grid.Row="3">
+            <CollectionView Margin="20" ItemsSource="{Binding Sessions}">
+                <CollectionView.ItemTemplate>
+                    <!-- Your DataTemplate here -->
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-            <CollectionView.ItemTemplate>
-
-                <DataTemplate>
-
-                    <Frame Style="{StaticResource SessionCard}">
-
-                        <Grid ColumnDefinitions="50,*,Auto"
-                              RowDefinitions="Auto,Auto,Auto">
-
-                            <!-- Avatar -->
-                            <Frame
-                                HeightRequest="40"
-                                WidthRequest="40"
-                                CornerRadius="20"
-                                BackgroundColor="#FFD6C2"
-                                   Padding="0">
-
-                                <Label
-                                    Text="{Binding Initials}"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       TextColor="White"
-                                       FontAttributes="Bold"/>
-                            </Frame>
-
-                            <!-- Name -->
-                            <Label Grid.Column="1"
-                                   Text="{Binding StudentName}"
-                                   Style="{StaticResource SessionName}"/>
-
-                            <!-- Status -->
-                            <Frame Grid.Column="2"
-                                   Padding="6,2"
-                                   BackgroundColor="{StaticResource StatusBackground}"
-                                   CornerRadius="8">
-
-                                <Label Text="{Binding Status}"
-                                       FontSize="11"
-                                       TextColor="{StaticResource PrimaryColor}"/>
-
-                            </Frame>
-
-                            <!-- Date -->
-                            <Label Grid.Column="1"
-                                   Grid.Row="1"
-                                   Text="{Binding SessionDate}"
-                                   Style="{StaticResource SessionDate}"/>
-
-                            <!-- Actions -->
-                            <HorizontalStackLayout Grid.Column="1"
-                                                   Grid.Row="2"
-                                                   Spacing="8">
-
-                                <Button Text="Edit" Clicked="Update_Clicked" FontSize="12"/>
-                                <Button Text="Archive" FontSize="12"/>
-                                <Button Text="Remove"
-                                       FontSize="12"
-                                        TextColor="Red"/>
-
-                            </HorizontalStackLayout>
-
-                        </Grid>
-
-                    </Frame>
-
-                </DataTemplate>
-
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-
-        <!-- FLOATING BUTTON -->
-        <Button Grid.Row="3"
-                Text="+"
+            <!-- FLOATING BUTTON -->
+            <Button Text="+"
                 Style="{StaticResource FloatingButton}"
                 Clicked="Create_Clicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="25"/>
-
-        <!-- BOTTOM NAV --><!--
-        <Grid Grid.Row="4"
-              BackgroundColor="White"
-              Padding="10"
-              ColumnDefinitions="*,*,*,*">
-
-            <VerticalStackLayout HorizontalOptions="Center">
-                <Label Text="🏠"/>
-                <Label Text="Home" FontSize="10"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
-                <Label Text="📅"/>
-                <Label Text="Schedule" FontSize="10"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
-                <Label Text="👥"/>
-                <Label Text="Students" FontSize="10"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center">
-                <Label Text="⚙"/>
-                <Label Text="Settings" FontSize="10"/>
-            </VerticalStackLayout>-->
+        </Grid>
 
     </Grid>
 
