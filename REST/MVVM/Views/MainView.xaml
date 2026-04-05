@@ -2,58 +2,98 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="REST.MVVM.Views.MainView"
-             Title="MainView"
-                 BackgroundColor="{StaticResource PageBackground}">
+             Title=""
+             BackgroundColor="{StaticResource PageBackground}">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
 
         <!-- HEADER -->
-        <Grid Padding="20,10" ColumnDefinitions="Auto,*,Auto">
-
-            <Label Text="☰" FontSize="22"/>
-            <Label Grid.Column="1" Text="Counseling Sessions" Style="{StaticResource HeaderTitle}"/>
-
-            <Frame Grid.Column="2" Padding="5" CornerRadius="20" BackgroundColor="Gray" HorizontalOptions="End" VerticalOptions="Center">
-                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="👤" FontSize="20"/>
-                    <Label Text="MC" TextColor="White" FontAttributes="Bold" FontSize="14"/>
-                    <Label Text="✕" TextColor="Red" FontSize="20">
+        <Grid Padding="20,15" ColumnDefinitions="*,Auto" BackgroundColor="White">
+            <Label Text="Counseling Sessions"
+                   Style="{StaticResource HeaderTitle}"
+                   HorizontalOptions="Start"/>
+            <Frame Grid.Column="1"
+                   Padding="8,5"
+                   CornerRadius="20"
+                   BackgroundColor="{StaticResource PrimaryColor}"
+                   HasShadow="False"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Spacing="6">
+                    <Label Text="MC"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           VerticalOptions="Center"/>
+                    <Label Text="X"
+                           TextColor="White"
+                           FontSize="14"
+                           VerticalOptions="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Closed_Click" NumberOfTapsRequired="1"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
             </Frame>
-
         </Grid>
 
         <!-- SEARCH -->
-        <SearchBar Grid.Row="1" Placeholder="Search students or dates" Margin="20,0"/>
+        <SearchBar Grid.Row="1"
+                   Placeholder="Search students or dates"
+                   Margin="15,10"
+                   BackgroundColor="White"/>
 
-        <!-- FILTER -->
-        <HorizontalStackLayout Grid.Row="2" Spacing="10" Margin="20,10">
-            <Button Text="All Sessions" BackgroundColor="{StaticResource PrimaryColor}" TextColor="White" CornerRadius="20"/>
-            <Button Text="Upcoming" BackgroundColor="#EAEAEA" CornerRadius="20"/>
-            <Button Text="Archived" BackgroundColor="#EAEAEA" CornerRadius="20"/>
-        </HorizontalStackLayout>
-
-        <!-- COLLECTIONVIEW + Floating Button -->
+        <!-- LIST + FLOATING BUTTON -->
         <Grid Grid.Row="3">
-            <CollectionView Margin="20" ItemsSource="{Binding Sessions}">
+            <CollectionView Margin="15,0" ItemsSource="{Binding Sessions}">
                 <CollectionView.ItemTemplate>
-                    <!-- Your DataTemplate here -->
+                    <DataTemplate>
+                        <Frame Margin="0,6"
+                               CornerRadius="12"
+                               Padding="15"
+                               BackgroundColor="White"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="*,Auto"
+                                  RowDefinitions="Auto,Auto,Auto">
+                                <Label Text="{Binding StudentName}"
+                                       Style="{StaticResource SessionName}"
+                                       Grid.Row="0"
+                                       Grid.Column="0"/>
+                                <Label Text="Upcoming"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       FontSize="11"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding CounselorName}"
+                                       Style="{StaticResource SessionDate}"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0,4,0,0"/>
+                                <Label Text="{Binding SessionDate}"
+                                       Style="{StaticResource SessionDate}"
+                                       Grid.Row="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"/>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Update_Clicked"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
             <!-- FLOATING BUTTON -->
             <Button Text="+"
-                Style="{StaticResource FloatingButton}"
-                Clicked="Create_Clicked"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="25"/>
+                    Style="{StaticResource FloatingButton}"
+                    Clicked="Create_Clicked"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="20"/>
         </Grid>
 
     </Grid>
-
 </ContentPage>

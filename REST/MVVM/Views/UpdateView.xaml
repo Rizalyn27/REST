@@ -2,74 +2,76 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="REST.MVVM.Views.UpdateView"
-             Title="UpdateView">
+             Title=""
+             BackgroundColor="{StaticResource PageBackground}">
     <ScrollView>
-
         <VerticalStackLayout Padding="20" Spacing="12">
 
             <!-- Header -->
-            <Grid ColumnDefinitions="Auto,*">
-                <Label Text="←" FontSize="20"/>
+            <Grid ColumnDefinitions="Auto,*" Margin="0,0,0,8">
+                <Label Text="&lt;"
+                       FontSize="20"
+                       VerticalOptions="Center"
+                       TextColor="{StaticResource PrimaryColor}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_Clicked" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <Label Text="Edit Session"
                        Grid.Column="1"
                        Style="{StaticResource HeaderTitle}"/>
             </Grid>
 
             <!-- Student -->
-            <Label Text="Student Name" FontAttributes="Bold"/>
-            <Entry Text="Alex Thompson"/>
+            <Label Text="Student Name" FontAttributes="Bold" TextColor="Black"/>
+            <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
+                <Entry Text="{Binding CurrentSession.StudentName}" BackgroundColor="Transparent" TextColor="Black"/>
+            </Frame>
 
             <!-- Counselor -->
-            <Label Text="Counselor" FontAttributes="Bold"/>
-            <Entry Text="Dr. Sarah Jenkins"/>
+            <Label Text="Counselor" FontAttributes="Bold" TextColor="Black"/>
+            <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
+                <Entry Text="{Binding CurrentSession.CounselorName}" BackgroundColor="Transparent" TextColor="Black"/>
+            </Frame>
 
-            <!-- Date Time -->
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-
-    <VerticalStackLayout>
-                    <Label Text="Date" FontAttributes="Bold"/>
-                    <DatePicker/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1">
-                    <Label Text="Time" FontAttributes="Bold"/>
-                    <TimePicker/>
-                </VerticalStackLayout>
-
-            </Grid>
+            <!-- Date and Time -->
+            <Label Text="Date" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Time" FontAttributes="Bold" TextColor="Black"/>
 
             <!-- Notes -->
-            <Label Text="Notes" FontAttributes="Bold"/>
-
-            <Editor HeightRequest="150"
-                    BackgroundColor="#F0F0F0"
-                    Text="Session focused on academic stress management."/>
+            <Label Text="Notes" FontAttributes="Bold" TextColor="Black"/>
+            <Frame Padding="10" CornerRadius="8" HasShadow="False" BackgroundColor="White">
+                <Editor Text="{Binding CurrentSession.Notes}"
+            HeightRequest="150"
+            BackgroundColor="Transparent"
+            TextColor="Black"/>
+            </Frame>
 
             <!-- Update Button -->
             <Button Text="Update Session"
+                    Command="{Binding UpdateCommand}"
                     BackgroundColor="{StaticResource PrimaryColor}"
                     TextColor="White"
-                    CornerRadius="10"/>
+                    CornerRadius="10"
+                    Margin="0,8,0,0"/>
 
             <!-- Danger Zone -->
+            <BoxView HeightRequest="1" BackgroundColor="#E0E0E0" Margin="0,16,0,0"/>
             <Label Text="DANGER ZONE"
                    FontAttributes="Bold"
                    FontSize="12"
                    TextColor="Gray"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,0"/>
-
+                   HorizontalOptions="Center"/>
             <Button Text="Hard Delete"
+                    Command="{Binding DeleteCommand}"
                     BackgroundColor="#FFE5E5"
                     TextColor="Red"
                     CornerRadius="10"/>
-
             <Label Text="This action is permanent and cannot be undone."
                    FontSize="11"
                    TextColor="Gray"
                    HorizontalOptions="Center"/>
 
-    </VerticalStackLayout>
-
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
