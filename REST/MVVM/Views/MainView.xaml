@@ -5,78 +5,97 @@
              Title=""
              BackgroundColor="{StaticResource PageBackground}">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*">
+    <Grid RowDefinitions="Auto,Auto,*">
 
         <!-- HEADER -->
-        <Grid Padding="20,15" ColumnDefinitions="*,Auto" BackgroundColor="White">
+        <Grid Padding="20,18,20,14"
+              ColumnDefinitions="*,Auto"
+              BackgroundColor="White">
             <Label Text="Counseling Sessions"
                    Style="{StaticResource HeaderTitle}"
-                   HorizontalOptions="Start"/>
+                   VerticalOptions="Center"/>
             <Frame Grid.Column="1"
-                   Padding="8,5"
+                   Padding="10,6"
                    CornerRadius="20"
                    BackgroundColor="{StaticResource PrimaryColor}"
                    HasShadow="False"
                    HorizontalOptions="End"
                    VerticalOptions="Center">
-                <StackLayout Orientation="Horizontal" Spacing="6">
+                <HorizontalStackLayout Spacing="8">
                     <Label Text="MC"
                            TextColor="White"
                            FontAttributes="Bold"
-                           FontSize="14"
+                           FontSize="13"
                            VerticalOptions="Center"/>
-                    <Label Text="X"
-                           TextColor="White"
-                           FontSize="14"
+                    <BoxView WidthRequest="1"
+                             HeightRequest="14"
+                             BackgroundColor="#44FFFFFF"
+                             VerticalOptions="Center"/>
+                    <Label Text="✕"
+                           TextColor="#CCFFFFFF"
+                           FontSize="13"
                            VerticalOptions="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Closed_Click" NumberOfTapsRequired="1"/>
                         </Label.GestureRecognizers>
                     </Label>
-                </StackLayout>
+                </HorizontalStackLayout>
             </Frame>
+            <!-- Bottom divider -->
+            <BoxView Grid.ColumnSpan="2"
+                     HeightRequest="0.5"
+                     BackgroundColor="{StaticResource HeaderDivider}"
+                     VerticalOptions="End"/>
         </Grid>
 
         <!-- SEARCH -->
-        <SearchBar Grid.Row="1"
-                   Placeholder="Search students or dates"
-                   Margin="15,10"
-                   BackgroundColor="White"/>
+        <Frame Grid.Row="1"
+               Margin="15,12,15,4"
+               Padding="4,0"
+               CornerRadius="10"
+               BackgroundColor="White"
+               BorderColor="{StaticResource DividerColor}"
+               HasShadow="False">
+            <SearchBar Placeholder="Search students or dates"
+                       BackgroundColor="Transparent"
+                       PlaceholderColor="{StaticResource PlaceholderColor}"/>
+        </Frame>
 
         <!-- LIST + FLOATING BUTTON -->
-        <Grid Grid.Row="3">
-            <CollectionView Margin="15,0" ItemsSource="{Binding Sessions}">
+        <Grid Grid.Row="2">
+            <CollectionView Margin="15,6,15,0"
+                            ItemsSource="{Binding Sessions}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0,6"
-                               CornerRadius="12"
-                               Padding="15"
-                               BackgroundColor="White"
-                               HasShadow="True">
-                            <Grid ColumnDefinitions="*,Auto"
-                                  RowDefinitions="Auto,Auto,Auto">
+                        <Frame Style="{StaticResource SessionCard}">
+                            <Grid ColumnDefinitions="4,*,Auto"
+                                  RowDefinitions="Auto,Auto,Auto"
+                                  Padding="0">
+
+                                <!-- Left accent bar -->
+                                <BoxView Grid.RowSpan="3"
+                                         BackgroundColor="{StaticResource PrimaryColor}"
+                                         WidthRequest="4"
+                                         CornerRadius="12,0,0,12"
+                                         VerticalOptions="Fill"/>
+
+                                <!-- Student name -->
                                 <Label Text="{Binding StudentName}"
                                        Style="{StaticResource SessionName}"
-                                       Grid.Row="0"
-                                       Grid.Column="0"/>
-                                <Label Text="Upcoming"
-                                       Grid.Row="0"
-                                       Grid.Column="1"
-                                       TextColor="{StaticResource PrimaryColor}"
-                                       FontSize="11"
-                                       FontAttributes="Bold"
-                                       VerticalOptions="Center"/>
+                                       Grid.Row="0" Grid.Column="1"/>
+
+                                <!-- Counselor name -->
                                 <Label Text="{Binding CounselorName}"
-                                       Style="{StaticResource SessionDate}"
-                                       Grid.Row="1"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       Margin="0,4,0,0"/>
-                                <Label Text="{Binding SessionDate}"
-                                       Style="{StaticResource SessionDate}"
-                                       Grid.Row="2"
-                                       Grid.Column="0"
+                                       Style="{StaticResource SessionCounselor}"
+                                       Grid.Row="1" Grid.Column="1"
                                        Grid.ColumnSpan="2"/>
+
+                                <!-- Session date -->
+                                <Label Text="{Binding SessionDate, StringFormat='{0:MMMM dd, yyyy}'}"
+                                       Style="{StaticResource SessionDate}"
+                                       Grid.Row="2" Grid.Column="1"
+                                       Grid.ColumnSpan="2"/>
+
                             </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Update_Clicked"/>
@@ -91,8 +110,7 @@
                     Style="{StaticResource FloatingButton}"
                     Clicked="Create_Clicked"
                     HorizontalOptions="End"
-                    VerticalOptions="End"
-                    Margin="20"/>
+                    VerticalOptions="End"/>
         </Grid>
 
     </Grid>

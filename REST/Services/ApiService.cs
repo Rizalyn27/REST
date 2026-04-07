@@ -14,6 +14,9 @@ namespace REST.MVVM.Services
         public async Task<List<Session>> GetAllAsync()
             => await _http.GetFromJsonAsync<List<Session>>(BaseUrl);
 
+        public async Task<Session> GetByIdAsync(string id)
+    => await _http.GetFromJsonAsync<Session>($"{BaseUrl}/{id}");
+
         public async Task<Session> CreateAsync(Session session)
         {
             var res = await _http.PostAsJsonAsync(BaseUrl, session);

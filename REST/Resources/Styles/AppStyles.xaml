@@ -8,45 +8,85 @@
     <Color x:Key="PageBackground">#F5F5F5</Color>
     <Color x:Key="CardBackground">White</Color>
     <Color x:Key="StatusBackground">#FFE5D6</Color>
+    <Color x:Key="DividerColor">#E5E7EB</Color>
+    <Color x:Key="CounselorNameColor">#6B7280</Color>
+    <Color x:Key="DateColor">#9CA3AF</Color>
+    <Color x:Key="BadgeBackground">#EEF2FF</Color>
+    <Color x:Key="BadgeBorder">#C7D2FE</Color>
+    <Color x:Key="BadgeText">#4338CA</Color>
+    <Color x:Key="PlaceholderColor">#9CA3AF</Color>
+    <Color x:Key="HeaderDivider">#E5E7EB</Color>
+    <Color x:Key="HeaderCloseColor">#FFFFFFCC</Color>
+    <Color x:Key="HeaderSeparatorColor">#FFFFFF44</Color>
 
     <!-- Header Title -->
     <Style x:Key="HeaderTitle" TargetType="Label">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor" Value="#333"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="TextColor" Value="#333333"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
     <!-- Session Name -->
     <Style x:Key="SessionName" TargetType="Label">
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Margin" Value="14,14,8,2"/>
+    </Style>
+
+    <!-- Session Counselor -->
+    <Style x:Key="SessionCounselor" TargetType="Label">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="TextColor" Value="{StaticResource CounselorNameColor}"/>
+        <Setter Property="Margin" Value="14,0,14,2"/>
     </Style>
 
     <!-- Session Date -->
     <Style x:Key="SessionDate" TargetType="Label">
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="TextColor" Value="Gray"/>
+        <Setter Property="TextColor" Value="{StaticResource DateColor}"/>
+        <Setter Property="Margin" Value="14,0,14,14"/>
     </Style>
 
     <!-- Session Card -->
     <Style x:Key="SessionCard" TargetType="Frame">
         <Setter Property="CornerRadius" Value="12"/>
-        <Setter Property="Padding" Value="15"/>
-        <Setter Property="Margin" Value="0,8"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0,5"/>
         <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}"/>
-        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="BorderColor" Value="{StaticResource DividerColor}"/>
+        <Setter Property="HasShadow" Value="False"/>
+    </Style>
+
+    <!-- Upcoming Badge Frame -->
+    <Style x:Key="UpcomingBadge" TargetType="Frame">
+        <Setter Property="Margin" Value="0,12,14,0"/>
+        <Setter Property="Padding" Value="8,3"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource BadgeBackground}"/>
+        <Setter Property="BorderColor" Value="{StaticResource BadgeBorder}"/>
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
+    </Style>
+
+    <!-- Upcoming Badge Text -->
+    <Style x:Key="UpcomingBadgeText" TargetType="Label">
+        <Setter Property="Text" Value="Upcoming"/>
+        <Setter Property="TextColor" Value="{StaticResource BadgeText}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
     <!-- Floating Button -->
     <Style x:Key="FloatingButton" TargetType="Button">
-        <Setter Property="WidthRequest" Value="60"/>
-        <Setter Property="HeightRequest" Value="60"/>
-        <Setter Property="CornerRadius" Value="30"/>
-        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="WidthRequest" Value="56"/>
+        <Setter Property="HeightRequest" Value="56"/>
+        <Setter Property="CornerRadius" Value="28"/>
+        <Setter Property="FontSize" Value="26"/>
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="TextColor" Value="White"/>
+        <Setter Property="Margin" Value="0,0,20,24"/>
     </Style>
 
 </ResourceDictionary>

@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="REST.MVVM.Views.CreateView"
-             Title=""
              BackgroundColor="{StaticResource PageBackground}">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
@@ -23,31 +22,35 @@
             </Grid>
 
             <!-- Student -->
-            <Label Text="Student Name" FontAttributes="Bold"/>
+            <Label Text="Student Name" FontAttributes="Bold" TextColor="Black"/>
             <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
                 <Entry Text="{Binding StudentName}"
                        Placeholder="Enter student name"
+                       TextColor="Black"
                        BackgroundColor="Transparent"/>
             </Frame>
 
             <!-- Counselor -->
-            <Label Text="Assigned Counselor" FontAttributes="Bold"/>
+            <Label Text="Assigned Counselor" FontAttributes="Bold" TextColor="Black"/>
             <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
                 <Entry Text="{Binding CounselorName}"
                        Placeholder="Enter counselor name"
+                       TextColor="Black"
                        BackgroundColor="Transparent"/>
             </Frame>
 
             <!-- Date -->
-            <Label Text="Session Date" FontAttributes="Bold"/>
+            <Label Text="Session Date" FontAttributes="Bold" TextColor="Black"/>
             <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
-                <DatePicker/>
+                <DatePicker Date="{Binding SessionDate}"
+                            TextColor="Black"/>
             </Frame>
 
             <!-- Notes -->
-            <Label Text="Notes" FontAttributes="Bold"/>
+            <Label Text="Notes" FontAttributes="Bold" TextColor="Black"/>
             <Frame Padding="10" CornerRadius="8" HasShadow="False" BackgroundColor="White">
                 <Editor Text="{Binding Notes}"
+                        TextColor="Black"
                         Placeholder="Mention session objectives or initial observations..."
                         HeightRequest="120"
                         BackgroundColor="Transparent"/>

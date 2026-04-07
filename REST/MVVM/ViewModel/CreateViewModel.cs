@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using REST.MVVM.Models;
 using REST.MVVM.Services;
 using Microsoft.Maui.Controls;
@@ -10,10 +9,33 @@ namespace REST.MVVM.ViewModel
     {
         private readonly ApiService _api = new ApiService();
 
-        public string StudentName { get; set; }
-        public string CounselorName { get; set; }
-        public string SessionDate { get; set; }
-        public string Notes { get; set; }
+        private string _studentName;
+        public string StudentName
+        {
+            get => _studentName;
+            set { _studentName = value; OnPropertyChanged(); }
+        }
+
+        private string _counselorName;
+        public string CounselorName
+        {
+            get => _counselorName;
+            set { _counselorName = value; OnPropertyChanged(); }
+        }
+
+        private DateTime _sessionDate = DateTime.Today;
+        public DateTime SessionDate
+        {
+            get => _sessionDate;
+            set { _sessionDate = value; OnPropertyChanged(); }
+        }
+
+        private string _notes;
+        public string Notes
+        {
+            get => _notes;
+            set { _notes = value; OnPropertyChanged(); }
+        }
 
         public ICommand SaveCommand { get; }
 
@@ -24,16 +46,23 @@ namespace REST.MVVM.ViewModel
 
         private async Task SaveAsync()
         {
-            var session = new Session
+            try
             {
-                StudentName = StudentName,
-                CounselorName = CounselorName,
-                SessionDate = SessionDate,
-                Notes = Notes
-            };
+                var session = new Session
+                {
+                    StudentName = StudentName,
+                    CounselorName = CounselorName,
+                    SessionDate = SessionDate.ToString("yyyy-MM-dd"),
+                    Notes = Notes
+                };
 
-            await _api.CreateAsync(session);
-            await Shell.Current.GoToAsync("..");  // go back after save
+                await _api.CreateAsync(session);
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
+            }
         }
     }
 }

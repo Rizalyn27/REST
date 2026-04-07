@@ -36,8 +36,14 @@
 
             <!-- Date and Time -->
             <Label Text="Date" FontAttributes="Bold" TextColor="Black"/>
+            <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
+                <DatePicker TextColor="Black"/>
+            </Frame>
             <Label Text="Time" FontAttributes="Bold" TextColor="Black"/>
-
+            <Frame Padding="10,0" CornerRadius="8" HasShadow="False" BackgroundColor="White">
+                <TimePicker TextColor="Black"/>
+            </Frame>
+            
             <!-- Notes -->
             <Label Text="Notes" FontAttributes="Bold" TextColor="Black"/>
             <Frame Padding="10" CornerRadius="8" HasShadow="False" BackgroundColor="White">
